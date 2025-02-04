@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('img/fondo3.avif'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment: fixed; 
+    min-height: 100vh; /* Altura mínima del 100% de la ventana */
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor - Desde Urano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('img/fondo3.avif'); /* Imagen de Urano como fondo */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Contenedor principal */
+        .container {
+            background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 90%;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Título */
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 3s infinite ease-in-out;
+            color: #a6d8ff; /* Color azul claro */
+        }
+
+        /* Subtítulo */
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            animation: float 2.5s infinite ease-in-out;
+            color: #7fffd4; /* Color verde agua */
+        }
+
+        /* Texto de la dedicatoria */
+        .dedicatoria {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: slideIn 2s ease-in-out;
+            color: #e0ffff; /* Color azul claro */
+        }
+
+        /* Galería de fotos */
+        .galeria {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .galeria img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #7fffd4; /* Borde verde agua */
+            box-shadow: 0 0 15px rgba(127, 255, 212, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(127, 255, 212, 0.8);
+        }
+
+        /* Botón de amor */
+        .boton-amor {
+            background: #00ced1; /* Color turquesa */
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .boton-amor:hover {
+            background: #20b2aa; /* Color turquesa oscuro */
+            transform: scale(1.1);
+        }
+
+        /* Efecto de corazones */
+        .corazones {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .corazones i {
+            position: absolute;
+            display: block;
+            font-size: 24px; /* Tamaño del corazón */
+            color: #00bfff; /* Color azul */
+            animation: caer 5s linear infinite;
+        }
+
+        @keyframes caer {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>Para Mi Amor</h1>
+        <h2>💖 Desde Urano, Te Amo 💖</h2>
+
+        <!-- Dedicatoria -->
+        <div class="dedicatoria">
+            <p>
+                Querida [Nombre de tu pareja],<br><br>
+                Aunque estemos a millones de kilómetros de distancia, mi amor por ti es tan infinito como el universo. Eres mi estrella más brillante en este vasto cosmos, y cada día a tu lado es un viaje mágico.<br><br>
+                Gracias por ser mi compañera en esta aventura llamada vida. Te amo más allá de las estrellas y los planetas.<br><br>
+                Con todo mi amor,<br>
+                [Tu nombre]
+            </p>
+        </div>
+
+        <!-- Galería de fotos -->
+        <div class="galeria">
+            <img src="img/foto1.jpg" alt="Foto 1" onclick="mostrarMensaje('¡Esta es nuestra primera aventura juntos! 💕')">
+            <img src="img/foto2.jpg" alt="Foto 2" onclick="mostrarMensaje('¡Este día fue mágico! ✨')">
+            <img src="img/foto3.jpg" alt="Foto 3" onclick="mostrarMensaje('¡Eres mi persona favorita! 😍')">
+        </div>
+
+        <!-- Botón de amor -->
+        <button class="boton-amor" onclick="lanzarCorazones()">💙 Envíame un Beso</button>
+    </div>
+
+    <!-- Efecto de corazones -->
+    <div class="corazones" id="corazones"></div>
+
+    <!-- Reproductor de música (oculto) -->
+    <div class="reproductor">
+        <audio id="musica" autoplay loop>
+            <source src="labiosrotos.mpeg" type="audio/mpeg">
+            Tu navegador no soporta audio.
+        </audio>
+    </div>
+
+    <script>
+        // Función para lanzar corazones
+        function lanzarCorazones() {
+            const corazonesContainer = document.getElementById('corazones');
+            for (let i = 0; i < 50; i++) { // Lanzar 50 corazones
+                const corazon = document.createElement('i');
+                corazon.innerHTML = '❤️'; // Emoji de corazón
+                corazon.style.left = Math.random() * 100 + 'vw'; // Posición horizontal aleatoria
+                corazon.style.animationDelay = Math.random() * 2 + 's'; // Retraso aleatorio
+                corazon.style.fontSize = Math.random() * 24 + 16 + 'px'; // Tamaño aleatorio
+                corazonesContainer.appendChild(corazon);
+            }
+            setTimeout(() => {
+                corazonesContainer.innerHTML = ''; // Limpiar corazones después de 5 segundos
+            }, 5000);
+        }
+
+        // Función para mostrar mensajes emergentes
+        function mostrarMensaje(mensaje) {
+            alert(mensaje);
+        }
+
+        // Reproducir música automáticamente al cargar la página
+        window.onload = function() {
+            const musica = document.getElementById('musica');
+            musica.play();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>letras giratorias</title>
+</head>
+<style>
+    body{
+        background-color: #1a1919;
+    }
+    /*accedemos al contaner principal*/
+    .container{
+        position: absolute;
+        width: 430px;/*ancho y alto */
+        height: 100px;
+        /*le damos un borde para poder verlo */
+        border: 3px solid red;
+        /*vamos a centrar el contenedor con las siguientes propiedades*/
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        /*le damos una sombra al contenedor*/
+        -webkit-box-shadow:-13px 9px 104px 17px rgba(245,9,9,0.45) ;
+        -moz-box-shadow: -13px 9px 104px 17px rgba(245,9,9,0.45) ;
+        /*me salta que no es compatible con mi css pero hace la sombra igual 
+        asi que seguimos adelante "carita feliz"*/
+        /*redondeamos el borede del contenedor*/
+        border-radius: 20px;
+    }
+
+    /*ingresamos al conteiner y luego a todos los parrafos(p*/
+    .container p{
+        color: #fb0727;
+        font-size: 4em;/*tamaño de fuente*/
+        margin-bottom: 20px;
+        top: -50px;
+    }
+    /*vamos a ingresar a todas las letras mediante la classe letra1*/
+    .letra1{
+        /*le vamos a dar una hermosa sombra para que pareza 3D*/
+        text-shadow: 0 1px 0 #ccc,
+                     
+                     0 2px 0 #ccc,
+                     0 4px 0 #ccc,
+                     0 5px 0 #ccc,
+                     0 6px 1px rgba(0,0,0,0.1),
+                     0 0px 5px rgba(0,0,0,0.1), 
+                     0 1px 3px rgba(0,0,0,0.3),
+                     0 6px 1px rgba(0,0,0,0.2),
+                     0 5px 10px rgba(0,0,0,0.25),
+                     0 10px 10px rgba(0,0,0,0.2),
+                     0 30px 20px rgba(0,0,0,.15);
+       }
+       /*hora vamos acceder a cada letra con si id y vamos a darle su animacion
+       y la vamos a ir pocicionando de a poco una por una */
+       /*la primera letra ni tiene id la seleccionamos con su clase*/
+       .letra1{
+        position: absolute;
+        /*posicionamos absolute para que cuando ocupemos el left o right tomen como
+        referenci a su antepasado osea su contenedor padre*/
+        left: 0px;
+        animation: 3s giro alternate infinite;/*aqui creamos la nimacion que sea de
+        3 segundos luego tenemos que ejecutarla , */
+
+       }
+@keyframes giro {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+}
+/*pasamos a letra por letra tomando como referencia si id y le damos las propiedades
+a cada una jugando con los segundos de la animacion */
+#e{
+    position: absolute;
+    left: 40px;
+    animation: 5s giro-e alternate infinite;
+}
+@keyframes giro-e {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+/*ahora vamos a copiar y pegar los trozos de codigo de cada letra y vamos 
+cambiando los id y las animaciones y su posicion left */
+
+#a{
+    position: absolute;
+    left: 120px;
+    animation: 5s giro-a alternate infinite;
+}
+@keyframes giro-a {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+#m{
+    position: absolute;
+    left: 170px;
+    animation: 8s giro-m alternate infinite;
+}
+@keyframes giro-m {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+#o{
+    position: absolute;
+    left: 230px;
+    animation: 4s giro-o alternate infinite;
+}
+@keyframes giro-o {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+#c{
+    position: absolute;
+    left: 300px;
+    animation: 10s giro-c alternate infinite;
+}
+@keyframes giro-c {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+#i{
+    position: absolute;
+    left: 350px;
+    animation: 3s giro-i alternate infinite;
+}
+@keyframes giro-i {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+#n{
+    position: absolute;
+    left: 380px;
+    animation: 5s giro-n alternate infinite;
+}
+@keyframes giro-n {
+    from{
+        transform: rotateY(0);
+    }to{
+        transform: rotateY(360deg);
+    }
+    
+}
+</style>
+<body>
+    <div class="container">
+        <p class="letra1" >T</p>
+        <p class="letra1" id="e">E</p>
+        <p class="letra1" id="a">A</p>
+        <p class="letra1" id="m">M</p>
+        <p class="letra1" id="o">O</p>
+        <p class="letra1" id="c">C</p>
+        <p class="letra1" id="i">I</p>
+        <p class="letra1" id="n">N</p>
+
+    </div>
+</body>
+</html>
